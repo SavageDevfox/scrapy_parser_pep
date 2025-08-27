@@ -4,12 +4,13 @@ from pathlib import Path
 
 from .constants import STATUSES
 
-BASEDIR = Path(__file__).parent.parent
+BASE_DIR = Path(__file__).parent.parent
 
 
 class PepParsePipeline:
+
     def open_spider(self, spider):
-        results_dir = BASEDIR / 'results'
+        results_dir = BASE_DIR / 'results'
         results_dir.mkdir(exist_ok=True)
         now = dt.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
         file_name = f'status_summary_{now}.csv'
