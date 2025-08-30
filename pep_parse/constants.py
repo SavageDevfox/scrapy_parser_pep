@@ -1,11 +1,2 @@
-STATUSES = {
-    'Active': 0,
-    'Accepted': 0,
-    'Deferred': 0,
-    'Draft': 0,
-    'Final': 0,
-    'Provisional': 0,
-    'Rejected': 0,
-    'Superseded': 0,
-    'Withdrawn': 0
-}
+allowed_domains = ['peps.python.org']
+start_urls = ['https://' + link + '/' for link in allowed_domains]

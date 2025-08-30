@@ -3,12 +3,13 @@ from urllib.parse import urljoin
 import scrapy
 
 from pep_parse.items import PepParseItem
+from pep_parse.constants import allowed_domains, start_urls
 
 
 class PepSpider(scrapy.Spider):
     name = 'pep'
-    allowed_domains = ['peps.python.org']
-    start_urls = ['https://peps.python.org/']
+    allowed_domains = allowed_domains
+    start_urls = start_urls
 
     def parse(self, response):
         ctg_section = response.css('section#index-by-category tbody tr')
