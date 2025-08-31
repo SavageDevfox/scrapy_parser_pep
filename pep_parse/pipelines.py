@@ -7,17 +7,7 @@ BASE_DIR = Path(__file__).parent.parent
 
 
 class PepParsePipeline:
-    STATUSES = defaultdict(int, {
-        'Active': 0,
-        'Accepted': 0,
-        'Deferred': 0,
-        'Draft': 0,
-        'Final': 0,
-        'Provisional': 0,
-        'Rejected': 0,
-        'Superseded': 0,
-        'Withdrawn': 0
-    })
+    statuses = defaultdict(int)
 
     def __init__(self):
         self.results_dir = BASE_DIR / 'results'
@@ -35,11 +25,11 @@ class PepParsePipeline:
             result = [
                 ('Статус', 'Количество')
             ]
-            result.extend(self.STATUSES.items())
-            result.append(('Total', sum(self.STATUSES.values())))
+            result.extend(self.statuses.items())
+            result.append(('Total', sum(self.statuses.values())))
             writer.writerows(result)
 
     def process_item(self, item, spider):
         status = item['status']
-        self.STATUSES[status] += 1
+        self.statuses[status] += 1
         return item
